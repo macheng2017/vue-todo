@@ -47,7 +47,7 @@ const config = {
 
 //如果是development 则加载这些选项
 if(isDev){
-  config.devtool ='#cheap-module-eval-source-map' //es6代码经过编译的在浏览器不能看,使用source-map进行代码映射
+  config.devtool ='#cheap-module-eval-source-map'; //es6代码经过编译的在浏览器不能看,使用source-map进行代码映射
   config.devServer ={
     port:8000,
     host:'0.0.0.0',// localhost 和 ip都可以访问
