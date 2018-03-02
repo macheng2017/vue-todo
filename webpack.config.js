@@ -44,13 +44,23 @@ const config = {
   ]
 };
 
+
+//如果是development 则加载这些选项
 if(isDev){
   config.devServer ={
     port:8000,
     host:'0.0.0.0',// localhost 和 ip都可以访问
     overlay:{
       errors:true //将显示错误打开
-    }
+    },
+    //historyFallback:{}//我们做的是SPA 很多都是前端的地址,经过vue-router,
+    //把一些后端无法解析的url请求定向到指定地址,例如index.html
+    //open:true // 修改完成之后自动打开一个浏览器
+    hot:true //局部刷新,不影响页面的其他部分数据
   }
+  config.plugins.push(
+    new webpack.HotModuleReplacementPlugin(),
+    new webpack.NoEmitOnErrorsPlugin()
+  )
 }
 module.exports = config;
