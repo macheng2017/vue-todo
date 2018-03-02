@@ -16,6 +16,7 @@ const config = {
   module: {
     rules: [
       { test: /\.vue$/, loader: "vue-loader" },
+      { test: /\.jsx$/, loader: "babel-loader" },//添加相应的配置
       { test: /\.css$/, use: ['style-loader','css-loader'] },
       { test: /\.(gif|jpg|jpeg|png|svg)$/,
         loader: 'url-loader',   
@@ -26,7 +27,13 @@ const config = {
     {test:/\.styl/,
       use:[
         'style-loader',
-        'css-loader',
+        'css-loader',  //添加对象 加快编译效率,使用前面自己生成的sourceMap
+        {
+          loader:'postcss-loader',
+          options:{
+            sourceMap:true
+          }
+        },
         'stylus-loader'
       ]}
     
